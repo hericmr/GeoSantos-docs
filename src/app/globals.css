@@ -1,0 +1,323 @@
+/* Importar fontes pixel art do jogo GeoSantos */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
+
+/* Definir fonte LaCartoonerie */
+@font-face {
+  font-family: 'LaCartoonerie';
+  src: url('/assets/laCartoonerie.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   DESIGN SYSTEM PIXEL ART - GeoSantos
+   =========================================== */
+:root {
+  /* Cores pixel art do jogo */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #1a1a1a;
+  --bg-accent: #2a2a2a;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  
+  /* Cores de ação pixel art */
+  --accent-blue: #57BDCD;
+  --accent-green: #10b981;
+  --accent-orange: #ff6600;
+  --accent-red: #ff0000;
+  --accent-yellow: #10b981;
+  --accent-purple: #ff00ff;
+  
+  /* Gradientes pixel art */
+  --gradient-primary: linear-gradient(45deg, #57BDCD 0%, #00ffff 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-warning: linear-gradient(45deg, #ff6600 0%, #ffaa00 100%);
+  --gradient-danger: linear-gradient(45deg, #ff0000 0%, #aa0000 100%);
+  
+  /* Sombras pixel art */
+  --shadow-sm: 2px 2px 0px rgba(0, 0, 0, 0.8);
+  --shadow-md: 4px 4px 0px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 6px 6px 0px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 8px 8px 0px rgba(0, 0, 0, 0.8);
+  
+  /* Bordas pixel art */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+  
+  /* Espaçamentos */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  
+  /* Transições */
+  --transition-fast: 0.1s steps(1);
+  --transition-normal: 0.2s steps(2);
+  --transition-slow: 0.3s steps(3);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'LaCartoonerie', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--text-primary);
+    background: var(--bg-primary);
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+    font-smooth: never;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Melhorar a legibilidade do texto */
+  p {
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Estilização para links internos */
+  a[href^="#"] {
+    scroll-margin-top: 2rem;
+  }
+  
+  /* Reset de estilos */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer components {
+  /* Efeito de hover para cards pixel art */
+  .pixel-card {
+    background: var(--bg-secondary);
+    border: 2px solid var(--text-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-md);
+    position: relative;
+    image-rendering: pixelated;
+  }
+  
+  .pixel-card::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.05) 2px,
+      rgba(255, 255, 255, 0.05) 4px
+    );
+    pointer-events: none;
+  }
+  
+  .pixel-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  /* Botão pixel art */
+  .pixel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg);
+    font-family: 'LaCartoonerie', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1;
+    border: 2px solid var(--text-primary);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    image-rendering: pixelated;
+  }
+  
+  .pixel-btn::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 255, 255, 0.1) 2px,
+      rgba(255, 255, 255, 0.1) 4px
+    );
+    pointer-events: none;
+  }
+  
+  .pixel-btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .pixel-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .pixel-btn--primary {
+    background: var(--accent-blue);
+    border-color: #ffffff;
+    color: #ffffff;
+  }
+  
+  .pixel-btn--success {
+    background: var(--accent-green);
+    border-color: #ffffff;
+    color: #000000;
+  }
+  
+  /* Gradiente de texto */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Animação de fade in */
+  .fade-in {
+    animation: fadeIn var(--transition-normal);
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animações pixel art */
+  .slide-up {
+    animation: slideUp var(--transition-normal);
+  }
+  
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .pulse {
+    animation: pulse var(--transition-slow) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+}
+
+@layer utilities {
+  /* Scrollbar customizada pixel art */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: var(--radius-sm);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-green);
+  }
+  
+  /* Utilitários de texto pixel art */
+  .text-pixel {
+    font-family: 'VT323', monospace;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+    font-smooth: never;
+  }
+  
+  .text-cartoon {
+    font-family: 'LaCartoonerie', sans-serif;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+    font-smooth: never;
+  }
+  
+  .text-pixel-sm { font-size: 16px; }
+  .text-pixel-base { font-size: 18px; }
+  .text-pixel-lg { font-size: 20px; }
+  .text-pixel-xl { font-size: 22px; }
+  .text-pixel-2xl { font-size: 26px; }
+  .text-pixel-3xl { font-size: 30px; }
+  .text-pixel-4xl { font-size: 34px; }
+  .text-pixel-5xl { font-size: 38px; }
+  
+  /* Cores do tema pixel art */
+  .bg-pixel-primary { background-color: var(--bg-primary); }
+  .bg-pixel-secondary { background-color: var(--bg-secondary); }
+  .bg-pixel-accent { background-color: var(--bg-accent); }
+  
+  .text-pixel-primary { color: var(--text-primary); }
+  .text-pixel-secondary { color: var(--text-secondary); }
+  .text-pixel-muted { color: var(--text-muted); }
+  
+  .text-pixel-blue { color: var(--accent-blue); }
+  .text-pixel-green { color: var(--accent-green); }
+  .text-pixel-orange { color: var(--accent-orange); }
+  .text-pixel-red { color: var(--accent-red); }
+  
+  /* Sombras pixel art */
+  .shadow-pixel-sm { box-shadow: var(--shadow-sm); }
+  .shadow-pixel-md { box-shadow: var(--shadow-md); }
+  .shadow-pixel-lg { box-shadow: var(--shadow-lg); }
+  .shadow-pixel-xl { box-shadow: var(--shadow-xl); }
+  
+  /* Bordas pixel art */
+  .border-pixel-sm { border-radius: var(--radius-sm); }
+  .border-pixel-md { border-radius: var(--radius-md); }
+  .border-pixel-lg { border-radius: var(--radius-lg); }
+  .border-pixel-xl { border-radius: var(--radius-xl); }
+}
