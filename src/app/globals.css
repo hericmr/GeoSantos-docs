@@ -2,14 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323:wght@400&display=swap');
 
-/* Definir fonte LaCartoonerie */
-@font-face {
-  font-family: 'LaCartoonerie';
-  src: url('/assets/laCartoonerie.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -72,7 +64,7 @@
   }
   
   body {
-    font-family: 'LaCartoonerie', sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 1.2;
@@ -145,7 +137,7 @@
     justify-content: center;
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg);
-    font-family: 'LaCartoonerie', sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 1;
@@ -280,7 +272,7 @@
   }
   
   .text-cartoon {
-    font-family: 'LaCartoonerie', sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: none;
     font-smooth: never;
