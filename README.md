@@ -197,3 +197,7 @@ A lógica desse jogo também pode ser usada em jogos de outras naturezas como ap
 
 
 **🎮 Espero que vcs se divirtam jogando como eu me diverti!** 🗺️
+
+---
+
+**🌐 Site oficial:** https://hericmr.github.io/GeoSantos-docs/
