@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Image from 'next/image';
 import { 
   Gamepad2, 
   Wrench, 
@@ -21,17 +22,26 @@ export default function Page() {
 
   return (
     <div className="min-h-screen">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 fade-in">
         <div className="max-w-5xl mx-auto">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
               // Títulos principais
               h1: ({node, ...props}) => (
-                <h1 className="text-pixel-5xl font-bold text-pixel-green mb-6 text-center flex items-center justify-center gap-3" {...props}>
-                  <MapPin className="h-12 w-12 text-pixel-green" />
-                  {props.children}
-                </h1>
+                <div className="text-center mb-6 slide-up">
+                  <div className="flex items-center justify-center mb-4">
+                    <Image 
+                      src="/assets/logo.png" 
+                      alt="GeoSantos Logo" 
+                      width={100} 
+                      height={100}
+                      className="pulse"
+                      priority
+                    />
+                  </div>
+                  <p className="text-pixel-lg text-pixel-muted">Jogo educativo sobre Santos (SP)</p>
+                </div>
               ),
               h2: ({node, ...props}) => {
                 const text = props.children?.toString() || '';
@@ -54,7 +64,7 @@ export default function Page() {
                 }
                 
                 return (
-                  <h2 className="text-pixel-3xl font-bold text-pixel-blue border-b-2 border-pixel-blue pb-3 mb-6 mt-8 flex items-center gap-3" {...props}>
+                  <h2 className="text-pixel-3xl font-bold text-pixel-blue border-b-2 border-pixel-blue pb-3 mb-6 mt-8 flex items-center gap-3 slide-up" {...props}>
                     {icon}
                     {props.children}
                   </h2>
@@ -81,7 +91,7 @@ export default function Page() {
                 }
                 
                 return (
-                  <h3 className="text-pixel-xl font-semibold text-pixel-green mb-4 mt-6 flex items-center gap-2" {...props}>
+                  <h3 className="text-pixel-xl font-semibold text-pixel-green mb-4 mt-6 flex items-center gap-2 slide-up" {...props}>
                     {icon}
                     {props.children}
                   </h3>
@@ -90,13 +100,13 @@ export default function Page() {
               
               // Parágrafos e texto
               p: ({node, ...props}) => (
-                <p className="text-pixel-secondary leading-relaxed mb-4 text-pixel-base" {...props} />
+                <p className="text-pixel-secondary leading-relaxed mb-4 text-pixel-base fade-in" {...props} />
               ),
               
               // Links
               a: ({node, ...props}) => (
                 <a 
-                  className="text-pixel-blue hover:text-pixel-green underline transition-colors duration-200" 
+                  className="text-pixel-blue hover:text-pixel-green underline transition-colors duration-200 fade-in" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   {...props} 
@@ -105,18 +115,18 @@ export default function Page() {
               
               // Listas
               ul: ({node, ...props}) => (
-                <ul className="list-disc list-inside text-pixel-secondary mb-4 space-y-2" {...props} />
+                <ul className="list-disc list-inside text-pixel-secondary mb-4 space-y-2 fade-in" {...props} />
               ),
               ol: ({node, ...props}) => (
-                <ol className="list-decimal list-inside text-pixel-secondary mb-4 space-y-2" {...props} />
+                <ol className="list-decimal list-inside text-pixel-secondary mb-4 space-y-2 fade-in" {...props} />
               ),
               li: ({node, ...props}) => (
-                <li className="text-pixel-secondary" {...props} />
+                <li className="text-pixel-secondary fade-in" {...props} />
               ),
               
               // Tabelas
               table: ({node, ...props}) => (
-                <div className="overflow-x-auto mb-6">
+                <div className="overflow-x-auto mb-6 fade-in">
                   <table className="w-full border-collapse bg-pixel-secondary rounded-lg shadow-pixel-lg" {...props} />
                 </div>
               ),
@@ -135,7 +145,7 @@ export default function Page() {
               
               // Imagens
               img: ({node, ...props}) => (
-                <div className="my-6 text-center">
+                <div className="my-6 text-center fade-in">
                   <img 
                     className="max-w-full h-auto rounded-sm shadow-pixel-lg border-2 border-pixel-blue mx-auto" 
                     {...props} 
@@ -145,17 +155,17 @@ export default function Page() {
               
               // Blockquotes
               blockquote: ({node, ...props}) => (
-                <blockquote className="border-l-4 border-pixel-green pl-4 py-2 my-6 bg-pixel-secondary rounded-r-sm italic text-pixel-secondary" {...props} />
+                <blockquote className="border-l-4 border-pixel-green pl-4 py-2 my-6 bg-pixel-secondary rounded-r-sm italic text-pixel-secondary fade-in" {...props} />
               ),
               
               // Código inline
               code: ({node, ...props}: any) => {
                 const isInline = !props.children?.toString().includes('\n');
                 if (isInline) {
-                  return <code className="bg-pixel-accent px-2 py-1 rounded-sm text-pixel-green font-mono text-sm" {...props} />;
+                  return <code className="bg-pixel-accent px-2 py-1 rounded-sm text-pixel-green font-mono text-sm fade-in" {...props} />;
                 }
                 return (
-                  <pre className="bg-pixel-accent p-4 rounded-sm overflow-x-auto my-6 border-2 border-pixel-blue shadow-pixel-md">
+                  <pre className="bg-pixel-accent p-4 rounded-sm overflow-x-auto my-6 border-2 border-pixel-blue shadow-pixel-md fade-in">
                     <code className="text-pixel-green font-mono text-sm" {...props} />
                   </pre>
                 );
@@ -164,19 +174,19 @@ export default function Page() {
               // Badges/Shields
               div: ({node, ...props}) => {
                 if (props.className?.includes('badge') || props.children?.toString().includes('shields.io')) {
-                  return <div className="flex flex-wrap gap-2 my-4" {...props} />;
+                  return <div className="flex flex-wrap gap-2 my-4 fade-in" {...props} />;
                 }
-                return <div {...props} />;
+                return <div className="fade-in" {...props} />;
               },
               
               // Strong
               strong: ({node, ...props}) => (
-                <strong className="font-bold text-pixel-green" {...props} />
+                <strong className="font-bold text-pixel-green fade-in" {...props} />
               ),
               
               // Emphasis
               em: ({node, ...props}) => (
-                <em className="italic text-pixel-blue" {...props} />
+                <em className="italic text-pixel-blue fade-in" {...props} />
               ),
             }}
           >

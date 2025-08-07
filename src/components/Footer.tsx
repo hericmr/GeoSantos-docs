@@ -1,13 +1,25 @@
-import { Github, Linkedin, Heart } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer className="bg-pixel-secondary text-pixel-primary p-6 mt-auto border-t-2 border-pixel-blue">
+    <footer className="bg-pixel-secondary text-pixel-primary p-6 mt-auto border-t-2 border-pixel-blue fade-in">
       <div className="container mx-auto text-center">
         <div className="flex flex-col items-center space-y-4">
-          {/* Removido: Desenvolvido com por Héric Moura */}
+          {/* Logo no footer */}
+          <div className="flex items-center justify-center slide-up">
+            <div className="relative">
+              <Image 
+                src="/assets/logo.png" 
+                alt="GeoSantos Logo" 
+                width={80} 
+                height={32}
+                className="pulse"
+              />
+            </div>
+          </div>
           
-          <div className="flex justify-center space-x-6">
+          <div className="flex justify-center space-x-6 slide-up">
             <a 
               href="https://github.com/hericmr" 
               target="_blank" 
@@ -28,7 +40,7 @@ export default function Footer() {
             </a>
           </div>
           
-          <p className="text-pixel-sm text-pixel-muted mt-4">
+          <p className="text-pixel-sm text-pixel-muted mt-4 fade-in">
             © 2024 GeoSantos - Jogo educativo sobre a cidade de Santos (SP)
           </p>
         </div>

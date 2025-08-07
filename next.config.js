@@ -5,8 +5,7 @@ const nextConfig = {
   images: {
     unoptimized: true
   },
-  basePath: '/GeoSantos-docs',
-  assetPrefix: '/GeoSantos-docs/',
+  basePath: process.env.NODE_ENV === 'production' ? '/GeoSantos-docs' : '',
 }
 
 module.exports = nextConfig 

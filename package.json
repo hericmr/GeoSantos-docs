@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build && next export",
-    "deploy": "npm run build && gh-pages -d out"
+    "deploy": "npm run build && node fix-paths.js && gh-pages -d out",
+    "build:prod": "NODE_ENV=production npm run build",
+    "fix-paths": "node fix-paths.js"
   },
   "dependencies": {
     "lucide-react": "^0.525.0",
